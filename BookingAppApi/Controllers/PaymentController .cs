@@ -27,11 +27,10 @@ namespace BookingAppApi.Controllers
       return Ok(new { paymentUrl = url });
     }
 
-    [HttpGet("VnPay")]
+    [HttpGet("VnPayCallback")]
     public IActionResult PaymentCallbackVnpay()
     {
       var response = _vnPayService.PaymentExecute(Request.Query);
-
       return Ok(response);
     }
 

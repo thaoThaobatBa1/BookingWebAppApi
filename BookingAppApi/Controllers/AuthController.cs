@@ -1,4 +1,4 @@
-﻿using BookingAppApi.Model;
+using BookingAppApi.Model;
 using BookingShop.Model.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

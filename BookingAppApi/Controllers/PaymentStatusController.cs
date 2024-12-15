@@ -1,4 +1,4 @@
-﻿using BookingAppApi.Model;
+using BookingAppApi.Model;
 using BookingShop.Data;
 using BookingShop.Model.Model;
 using Microsoft.AspNetCore.Http;
@@ -35,5 +35,16 @@ namespace BookingAppApi.Controllers
             _context.SaveChanges();
             return Ok(paymentStatus);
         }
+    [HttpGet("UpdateStatus")]
+    public IActionResult UpdatePaymentStatus(Guid id)
+    {
+       var cureentOrder = _context.Orders.FirstOrDefault(a => a.OrderID == id) ;
+      cureentOrder.PaymentStatusId = Guid.Parse("18cce18d-a516-4155-89b2-51eed783951d");
+      _context.SaveChanges();
+      return Ok(cureentOrder);
+
     }
+
+
+  }
 }

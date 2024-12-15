@@ -1,4 +1,4 @@
-﻿using BookingShop.Model.Model;
+using BookingShop.Model.Model;
 
 namespace BookingAppApi.Model
 {

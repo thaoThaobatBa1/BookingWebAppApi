@@ -1,3 +1,4 @@
+using BookingAppApi.VnPayService;
 using BookingShop.Data;
 using BookingShop.Model.Model;
 using BookingShop.Sevice.ISeivces;
@@ -62,6 +63,7 @@ builder.Services.AddScoped<IMenuItemService, MenuItemService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IBanerSevice, BanerSevice>();
 builder.Services.AddScoped<IArticleSevice, ArticleSevice>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookingDbContext>().AddDefaultTokenProviders();
 

@@ -1,4 +1,4 @@
-﻿namespace BookingAppApi.Model
+namespace BookingAppApi.Model
 {
     public class BookingListInformation
     {

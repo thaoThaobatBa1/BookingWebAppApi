@@ -1,4 +1,6 @@
-﻿using BookingAppApi.Model;
+using BookingAppApi.Model;
+using BookingAppApi.Model.VnPay;
+using BookingAppApi.VnPayService;
 using BookingShop.Model.Model;
 using BookingShop.Sevice.ISeivces;
 using Microsoft.AspNetCore.Http;
@@ -11,13 +13,29 @@ namespace BookingAppApi.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _paymentService;
+        private readonly IVnPayService _vnPayService;
 
-        public PaymentController(IPaymentService paymentService)
-        {
-            _paymentService = paymentService;
-        }
+    public PaymentController(IPaymentService paymentService, IVnPayService vnPayService)
+    {
+      _paymentService = paymentService;
+      _vnPayService = vnPayService;
+    }
+    [HttpPost("VnPay")]
+    public IActionResult CreatePaymentUrlVnpay(PaymentInformationModel model)
+    {
+      var url = _vnPayService.CreatePaymentUrl(model, HttpContext);
+      return Ok(new { paymentUrl = url });
+    }
 
-        [HttpGet]
+    [HttpGet("VnPay")]
+    public IActionResult PaymentCallbackVnpay()
+    {
+      var response = _vnPayService.PaymentExecute(Request.Query);
+
+      return Ok(response);
+    }
+
+    [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetAllPayments()
         {
             var payments = await _paymentService.GetAllPaymentsAsync();

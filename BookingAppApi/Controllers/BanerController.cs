@@ -1,4 +1,4 @@
-﻿using BookingAppApi.Model;
+using BookingAppApi.Model;
 using BookingShop.Data;
 using BookingShop.Model.Model;
 using BookingShop.Sevice.ISeivces;
